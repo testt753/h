@@ -1,0 +1,17 @@
+{
+  "id": "deny-delete-non-admin",
+  "description": "Only admins can delete resources",
+  "effect": "deny",
+  "priority": 90,
+  "target": {
+    "service": "*",
+    "action": "delete"
+  },
+  "conditions": [
+    {
+      "field": "user.role",
+      "operator": "neq",
+      "value": "admin"
+    }
+  ]
+}

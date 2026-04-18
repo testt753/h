@@ -1,0 +1,7 @@
+{
+  "name": "security-policy-engine",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/security/policy-engine/src",
+  "projectType": "library",
+  "tags": []
+}

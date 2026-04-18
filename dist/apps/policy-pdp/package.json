@@ -1,0 +1,16 @@
+{
+  "name": "policy-pdp",
+  "version": "0.0.1",
+  "dependencies": {
+    "@nestjs/common": "11.1.6",
+    "@nestjs/config": "4.0.2",
+    "@nestjs/core": "11.1.6",
+    "@nestjs/platform-express": "11.1.6",
+    "class-transformer": "0.5.1",
+    "class-validator": "0.14.2",
+    "reflect-metadata": "0.2.2",
+    "rxjs": "7.8.2"
+  },
+  "packageManager": "npm@10.8.2",
+  "main": "main.js"
+}

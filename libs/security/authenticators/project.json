@@ -1,0 +1,7 @@
+{
+  "name": "security-authenticators",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/security/authenticators/src",
+  "projectType": "library",
+  "tags": []
+}

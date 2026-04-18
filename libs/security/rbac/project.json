@@ -1,0 +1,7 @@
+{
+  "name": "security-rbac",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/security/rbac/src",
+  "projectType": "library",
+  "tags": []
+}

@@ -1,0 +1,7 @@
+{
+  "name": "data-redis",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/data/redis/src",
+  "projectType": "library",
+  "tags": []
+}

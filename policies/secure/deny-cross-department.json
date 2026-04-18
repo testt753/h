@@ -1,0 +1,27 @@
+{
+  "id": "deny-cross-department",
+  "description": "Deny cross-department access for non-admin subjects",
+  "effect": "deny",
+  "priority": 95,
+  "target": {
+    "service": "*",
+    "action": "*"
+  },
+  "conditions": [
+    {
+      "field": "user.role",
+      "operator": "neq",
+      "value": "admin"
+    },
+    {
+      "field": "user.department",
+      "operator": "neq",
+      "value": "finance"
+    },
+    {
+      "field": "resource.department",
+      "operator": "eq",
+      "value": "finance"
+    }
+  ]
+}

@@ -1,0 +1,145 @@
+### SecureCorp Manual HTTP Walkthrough
+### 1. Start the stack locally with `npm run start:local:secure` or `npm run start:local:vulnerable`
+### 2. Execute the requests in order
+### 3. Copy returned `tgt`, `serviceTicket`, `serviceSessionKey` into the variables below
+### 4. Generate `X-Authenticator` with `node scripts/demo/generate-authenticator.mjs ...`
+
+@kdc = http://localhost:3001/api
+@pdp = http://localhost:3002/api
+@audit = http://localhost:3003/api
+@finance = http://localhost:3012/api
+
+@aliceTgt = eyJraWQiOiJ2MSIsIml2IjoiZVp2b1Y4MVo5cFowamM2WiIsImNpcGhlcnRleHQiOiJYSHo4NlM2X1M3dG9SMS1QR3N4ZVI1dWhoVXdKekd1b2VRQXR1ekZkbTJZcHN2RzBkTnRZOWt1X1pjTDZ0QVNWbGNBTFowZno1RjVGdEFRTG9hWXRTbzAzdjYwYk10eU9vTnhSeldwRFJ6WGtSd1lYS1QwSmd2WUczcEdOdmVhLTQwckxHRFJyVGtyazRGNmRNdVpXN3pjc3pPSnoyeE1GUU1xZDlBYkF4djFRWXlTRVpJenk3VmU5akx6ZkpzZVluYkpIMUJaQm9lQlBSemZsUnpvMUM5WTFucDZ0NEhCa0lIeEJ5YjBuSmc0MTJWLUxPZWp4dDFzaDg0eDUwcC1IRXhNX3I2aXlGOTJKT2FEQVZJeWJ1RE9ieWdfa3kzWXprc3VId1ZyeTh3enpBNVEwQ0NOdklUQ2xKa21HMG56aGFSZmJoX1NUYjdtWnZyekhCOHgzQTE0bS01YnNXOVJwN1E5N1RVRmFKaG1aOExSUFhmQkd1MXpXVEEtQ3RCTGRYRXM5bFJNQzFYaGpQaHVCYU9FWGpjOWpTMnh5dGRqa09sZmpxaXB5QThOZ0ZNdk4tV0hvdV9QZEpxaU1Hdzc4N25pSnFENTdtbk9LZm5nS3E5ZzlFWXQzYnllNm54c0VTUzJualpNOTZiR21wRk5UMkU2dWxkbDA5cVA5S0hrR04xcXNSYmxkejQ1eF85a3Y3UV9objJuOFVkcjN2LU1rYUh0N0VpMFJGTVA4clRDYXl6X1dYX0I1NEVTbm9ySzJuZXBranFMYVlFZGFORnRDTFpZc3dEeGh0dnRNbE9PeFdzRG1VNWw0X2FZYlVaZGRQMmVkbnJmYzhVeGtBOFZYNHM4YlBoUWFDanpKN01EamtWdnJHTHNyUGhadkRnbjJrUjJMU2tOOU54d2xvZkEiLCJ0YWciOiJka2gwMU9aTDctRHAwd0p2RzJJaGZnIn0
+@aliceServiceTicket = eyJraWQiOiJ2MSIsIml2IjoiQlI3NTJCNDBGdF8zcy16UiIsImNpcGhlcnRleHQiOiJ1UFE1R29wWnRwdDV0WXlFWVhiSWtaM0ZOU0w3TEZLeHYwYVZSaGh4NndXUmRiZXQweW15Nmlxb2JlQzhMal9KbVBDcTQxdzlLYll3UEVxUVVUX3hBdU84UkF2bWhjTW82dWY4VHNOQzZ0aFpPVEV0ZVlLM0w1WlFjT211UGpzU2tpYXpXYzVBV0VCdVhjcUNRV3QzNk5kRWlzallnTmM4ZWtBUGEyOGFtVlAtZTdqeUZyNVRhc1NJQXdWQ3VZODhQc2prdE5OcnpUZXhoUUoxUlFmRGhjX013S3pXUk83WGdrcUotRENhUkVtTnhnOXVvTGVFLWhvbTFMQm91RGxRdGRlaWVzcHpUbjE4OGVTM3lEcVI1VnVzeUV1Rm94U1hnSUhOc0FMS040WGJ4aHdGSi1mMElfRG5RVm1fc1NuMjlhckp3QlpXbF9zSVNIclRFa3Q2RFFwZE9td1JVeFYwUzlxM29JOFBrY3NwVVBrRkVTVWhsRV92cldOOXdlQVFhWVk2VTF2dzRmVFc5MUk0RW1RSFJZa2V2WFVxMFlDRi1Vbmd4WUdSZHEwNDRXMG5uYVZCYU80Nms2OW9qMFJFZnFkMkFfS0ZvMl9IUEhwRDZET3lNN3hZa2hkeXZKVDdxZ3ZIZUFGMzYwc1lSNzJ2b0ZneVZLZjFWQWZNTWRVeTZyUGROQ0xZcmxVMXAxT2hPRVpQQXFTV3hBal9pdHlMWUdCX3VnTi1Ja2lRVDdDZlhXQTgwNDBscFBYR054bUpsbVZPaVg2VFVFdWlZVUZ5UlhmOWlxZmVaM0RZYjZ6UmgtTTZBN1lwSEVZN09TZXlaVFloSk1PWWNWbDdyMVNWWFZZWkRlZEh1STVBMjBOQUJqWm5mQTlGNXRmbjJNVi1RN2ZRLXFhMmJyUTdydyIsInRhZyI6Ikp0UHFJNTAxOXotZVBEV1VqVVV0bEEifQ
+@aliceServiceSessionKey = 9XJBs21zzJBlGLUAq9FsZvbwcbm_cXVOpvBaYzGXTwQ
+@aliceAuthenticator = eyJjbGFpbXMiOnsic3ViIjoidXNlci1maW5hbmNlLTAwMSIsInNlcnZpY2UiOiJyZXNvdXJjZS1maW5hbmNlIiwidGltZXN0YW1wIjoiMjAyNi0wNC0xOFQxOTowMjowOC43MDRaIiwibm9uY2UiOiI0MzNhNzI5MC0xNzBkLTQ0YTctYTlmZS1iYmE1MWIwNmYzMWIiLCJyZXF1ZXN0SGFzaCI6IjA4ODAwYmRmNDFlMjU2ZDE1MmQwYTllOTZiNjFmYjNlOTFhNThlYjYyNjE5YzEyMjUzN2VkYjg0MWRjNjhjYmMifSwic2lnbmF0dXJlIjoiODE1MDIzNTMzOGYxMzA0ZDJhNzEzZTdiNmRhYzQxNWUwZWQwMDU0MmU1MmEwNDBlNzk3ZjI3ODNjZWE2NWQ0NyJ9
+
+@bobTgt = PASTE_TGT_HERE
+@bobServiceTicket = PASTE_SERVICE_TICKET_HERE
+@bobServiceSessionKey = PASTE_SERVICE_SESSION_KEY_HERE
+@bobAuthenticator = PASTE_AUTHENTICATOR_HERE
+
+@eveTgt = PASTE_TGT_HERE
+@eveServiceTicket = PASTE_SERVICE_TICKET_HERE
+@eveServiceSessionKey = PASTE_SERVICE_SESSION_KEY_HERE
+@eveAuthenticator = PASTE_AUTHENTICATOR_HERE
+
+### 0. Health checks
+GET {{kdc}}/health
+
+GET {{pdp}}/health
+
+GET {{audit}}/health
+
+GET {{finance}}/health
+
+### 1. Login as alice (finance manager)
+POST {{kdc}}/login
+content-type: application/json
+
+{
+  "username": "alice",
+  "password": "Alice123!"
+}
+
+### Expected: 200 with `tgt`, `clientSessionKey`, `user.id = user-finance-001`
+
+### 2. Request finance service ticket for alice
+POST {{kdc}}/request-ticket
+content-type: application/json
+
+{
+  "tgt": "{{aliceTgt}}",
+  "service": "resource-finance"
+}
+
+### Expected: 200 with `serviceTicket`, `serviceSessionKey`
+
+### 3. Generate alice authenticator
+### node scripts/demo/generate-authenticator.mjs --sub user-finance-001 --service resource-finance --method GET --path /api/resource/fin-doc-001 --session-key "{{aliceServiceSessionKey}}"
+### Copy `.token` into `@aliceAuthenticator`
+
+### 4. Valid finance read by alice
+GET {{finance}}/resource/fin-doc-001
+X-Service-Ticket: {{aliceServiceTicket}}
+X-Authenticator: {{aliceAuthenticator}}
+X-Request-Id: req-alice-read-1
+
+### Expected in both profiles: 200 with the finance resource payload
+
+### 5. Replay test using the exact same authenticator
+GET {{finance}}/resource/fin-doc-001
+X-Service-Ticket: {{aliceServiceTicket}}
+X-Authenticator: {{aliceAuthenticator}}
+X-Request-Id: req-alice-read-2
+
+### Expected:
+### secure: 401 or 403 because replay is blocked
+### vulnerable: 200 because replay protection is relaxed
+
+### 6. Login as bob (HR employee)
+POST {{kdc}}/login
+content-type: application/json
+
+{
+  "username": "bob",
+  "password": "Bob123!!"
+}
+
+### 7. Request finance ticket for bob
+POST {{kdc}}/request-ticket
+content-type: application/json
+
+{
+  "tgt": "{{bobTgt}}",
+  "service": "resource-finance"
+}
+
+### 8. Generate bob authenticator
+### node scripts/demo/generate-authenticator.mjs --sub user-hr-001 --service resource-finance --method GET --path /api/resource/fin-doc-001 --session-key "{{bobServiceSessionKey}}"
+
+### 9. Cross-department read by bob
+GET {{finance}}/resource/fin-doc-001
+X-Service-Ticket: {{bobServiceTicket}}
+X-Authenticator: {{bobAuthenticator}}
+X-Request-Id: req-bob-read-1
+
+### Expected:
+### secure: 403 denied by ABAC and department isolation
+### vulnerable: 200 because ABAC is relaxed
+
+### 10. Login as eve (external user)
+POST {{kdc}}/login
+content-type: application/json
+
+{
+  "username": "eve",
+  "password": "Eve123!!"
+}
+
+### 11. Request finance ticket for eve
+POST {{kdc}}/request-ticket
+content-type: application/json
+
+{
+  "tgt": "{{eveTgt}}",
+  "service": "resource-finance"
+}
+
+### 12. Generate eve authenticator
+### node scripts/demo/generate-authenticator.mjs --sub user-ext-001 --service resource-finance --method GET --path /api/resource/fin-doc-001 --session-key "{{eveServiceSessionKey}}"
+
+### 13. External access to secret finance resource
+GET {{finance}}/resource/fin-doc-001
+X-Service-Ticket: {{eveServiceTicket}}
+X-Authenticator: {{eveAuthenticator}}
+X-Request-Id: req-eve-read-1
+
+### Expected:
+### secure: 403 denied
+### vulnerable: 200 allowed
+
+### 14. Inspect audit trail
+GET {{audit}}/events?limit=20
+
+### Expected: 200 with auth and authorization events

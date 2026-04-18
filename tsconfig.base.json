@@ -1,0 +1,71 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2022",
+    "module": "commonjs",
+    "lib": [
+      "es2022"
+    ],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "shared-config": [
+        "libs/shared/config/src/index.ts"
+      ],
+      "shared-contracts": [
+        "libs/shared/contracts/src/index.ts"
+      ],
+      "shared-logging": [
+        "libs/shared/logging/src/index.ts"
+      ],
+      "shared-utils": [
+        "libs/shared/utils/src/index.ts"
+      ],
+      "security-crypto": [
+        "libs/security/crypto/src/index.ts"
+      ],
+      "security-tickets": [
+        "libs/security/tickets/src/index.ts"
+      ],
+      "security-authenticators": [
+        "libs/security/authenticators/src/index.ts"
+      ],
+      "security-replay": [
+        "libs/security/replay/src/index.ts"
+      ],
+      "security-rbac": [
+        "libs/security/rbac/src/index.ts"
+      ],
+      "security-abac": [
+        "libs/security/abac/src/index.ts"
+      ],
+      "security-policy-engine": [
+        "libs/security/policy-engine/src/index.ts"
+      ],
+      "security-profile": [
+        "libs/security/security-profile/src/index.ts"
+      ],
+      "data-seed": [
+        "libs/data/seed/src/index.ts"
+      ],
+      "data-postgres": [
+        "libs/data/postgres/src/index.ts"
+      ],
+      "data-redis": [
+        "libs/data/redis/src/index.ts"
+      ]
+    }
+  },
+  "exclude": [
+    "node_modules",
+    "tmp"
+  ]
+}

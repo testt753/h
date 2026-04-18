@@ -1,0 +1,7 @@
+{
+  "name": "security-abac",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/security/abac/src",
+  "projectType": "library",
+  "tags": []
+}

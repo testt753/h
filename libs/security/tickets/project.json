@@ -1,0 +1,7 @@
+{
+  "name": "security-tickets",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/security/tickets/src",
+  "projectType": "library",
+  "tags": []
+}

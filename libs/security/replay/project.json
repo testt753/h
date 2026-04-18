@@ -1,0 +1,7 @@
+{
+  "name": "security-replay",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/security/replay/src",
+  "projectType": "library",
+  "tags": []
+}
