@@ -1,4 +1,45 @@
-
 .nx/installation
 .nx/cache
 .nx/workspace-data
+
+# dependencies
+node_modules/
+
+# nx
+.nx/cache
+.nx/workspace-data
+
+# production
+dist/
+build/
+
+# temporary folders
+tmp/
+temp/
+.cache/
+
+# coverage
+coverage/
+
+# logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# env files
+.env*
+!.env.example
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# TypeScript
+*.tsbuildinfo
